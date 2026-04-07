@@ -1,2 +1,3 @@
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin:$HOME/.local/bin"
 export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/nvim
+export VISUAL="/opt/nvim-linux-x86_64/bin/nvim"
