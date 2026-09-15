@@ -56,8 +56,7 @@ local pick_added_hunks_buf = '<Cmd>Pick git_hunks path="%" scope="staged"<CR>'
 local pick_workspace_symbols_live = '<Cmd>Pick lsp scope="workspace_symbol_live"<CR>'
 nmap_leader('f/', '<Cmd>Pick history scope="/"<CR>', '"/" history')
 nmap_leader('f:', '<Cmd>Pick history scope=":"<CR>', '":" history')
-nmap_l
-ader('fa', '<Cmd>Pick git_hunks scope="staged"<CR>', 'Added hunks (all)')
+nmap_leader('fa', '<Cmd>Pick git_hunks scope="staged"<CR>', 'Added hunks (all)')
 nmap_leader('fA', pick_added_hunks_buf, 'Added hunks (buf)')
 nmap_leader('fb', '<Cmd>Pick buffers<CR>', 'Buffers')
 nmap_leader('fc', '<Cmd>Pick git_commits<CR>', 'Commits (all)')
