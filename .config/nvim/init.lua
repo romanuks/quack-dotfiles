@@ -10,13 +10,29 @@ end
 vim.pack.add {
   gh('catppuccin', 'nvim'),
   gh('neovim', 'nvim-lspconfig'),
-  gh('nvim-mini', 'mini.nvim')
+  gh('nvim-mini', 'mini.nvim'),
+  gh('stevearc', 'conform.nvim'),
 }
 
 require('mini.icons').setup()
+require('mini.tabline').setup()
+require('mini.bufremove').setup()
 require('mini.files').setup()
+require('mini.git').setup()
 require('mini.pick').setup()
 require('mini.ai').setup()
+require('mini.notify').setup()
+require('mini.basics').setup({
+  options = {
+    basic = true,
+    extra_ui = true,
+  }
+})
+require('conform').setup({
+  default_format_opts = {
+    lsp_format = 'fallback',
+  },
+})
 
 vim.cmd.colorscheme('catppuccin')
 
@@ -69,23 +85,3 @@ vim.lsp.config('lua_ls', {
     },
   },
 })
-
-vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Yank to clipboard' })
-vim.keymap.set({ 'v', 'x' }, '<leader>y', '"+y', { noremap = true, silent = true, desc = 'Yank to clipboard' })
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>yy', '"+yy',
-  { noremap = true, silent = true, desc = 'Yank line to clipboard' })
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>Y', '"+yy', { noremap = true, silent = true, desc = 'Yank line to clipboard' })
-vim.keymap.set({ 'n', 'v', 'x' }, '<C-a>', 'gg0vG$', { noremap = true, silent = true, desc = 'Select all' })
-vim.keymap.set({ 'n', 'v', 'x' }, '<leader>p', '"+p', { noremap = true, silent = true, desc = 'Paste from clipboard' })
-vim.keymap.set('i', '<C-p>', '<C-r><C-p>+',
-  { noremap = true, silent = true, desc = 'Paste from clipboard from within insert mode' })
-
--- mini.files
-local MiniFiles = require('mini.files')
-vim.keymap.set('n', '<leader>e', function()
-  if not MiniFiles.close() then
-    MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
-    MiniFiles.reveal_cwd()
-  end
-end, { desc = 'Toggle (fresh for current file) mini.files window' })
